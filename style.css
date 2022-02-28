@@ -406,3 +406,40 @@ nav.show div.icon-close {
 	clip-path: circle();
 	margin-right: 0.5rem;
 }
+.swiper-slide {
+	height: auto;
+	padding: 4rem 1rem;
+}
+.swiper-pagination-bullet {
+	width: 0.75rem;
+	height: 0.75rem;
+}
+
+.swiper-pagination-bullet-active {
+	background: var(--base-color);
+}
+
+/*====  CONTATOS ============================ */
+
+#contact .grid {
+	gap: 4rem;
+}
+
+#contact .text p {
+	margin-bottom: 2rem;
+}
+
+#contact .button i {
+	font-size: 1.5rem;
+	margin-top: 0.625rem;
+}
+
+#contact .button i,
+#contact ul li i {
+	font-size: 1.5rem;
+	margin-right: 0.625rem;
+}
+
+#contact ul.grid {
+	gap: 2rem;
+}
