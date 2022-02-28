@@ -62,7 +62,7 @@ const scrollReveal = ScrollReveal({
 	duration: 700,
 	reset: true
 })
-
+/* ScrollReveal:mostrar elementos quando der scroll na página */
 scrollReveal.reveal(
 	`#home .image, #home .text,
   #about .image, #about .text,
