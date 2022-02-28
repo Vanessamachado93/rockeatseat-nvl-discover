@@ -480,3 +480,47 @@ footer .social {
 	display: flex;
 	gap: 2rem;
 }
+
+.icon-setaPraCima {
+	color: black;
+}
+
+/*back-to-top*/
+
+.back-to-top {
+	background: var(--base-color);
+	color: var(--text-color-light);
+
+	right: 1rem;
+	bottom: 1rem;
+	padding: 1rem;
+	clip-path: circle();
+}
+.back-to-top.show {
+	visibility: visible;
+	opacity: 1;
+	transform: translateY(0);
+}
+
+/*font-size: 1.5rem;
+	line-height: 0;
+
+	visibility: hidden;
+	opacity: 0;
+
+	transition: 0.3s;
+	transform: translateY(100%);
+*/
+
+footer .social a:hover {
+	/*efeito nos botoes de app*/
+	transform: translateY(-8px);
+}
+/*------- MEDIA QUERIES----------*/
+/* EXTRA LARGE DEVICES: 1200 > */
+/* LARGE DEVICES: 1023> */
+/* LAGE DEVICES : 992> */
+/* MEDIUM DEVICES: 767> ----tablet para baixo, em pixel*/
+
+@media (min-width: 992px) {
+}
