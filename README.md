@@ -1,3 +1,6 @@
+![image](https://user-images.githubusercontent.com/90429240/156283920-c9566c44-a434-4149-9c4f-d08d647d9d61.png)
+
+
 Rockeatseat-nvl-discover
 Aulas NLW Mission: Origin</br>
 🚀 Tecnologias
