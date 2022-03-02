@@ -33,9 +33,12 @@ img {
 	--text-color-light: hsl(0 0% 98%);
 	--body-color: hsl(0 0% 98%);
 
-	/*Fonts */
+	/* fonts */
 	--title-font-size: 1.875rem;
-	--subtitle-font-size: 1.125rem;
+	--subtitle-font-size: 1rem;
+
+	--title-font: 'Poppins', sans-serif;
+	--body-font: 'DM Sans', sans-serif;
 }
 
 /*===  BASE ============================ */
@@ -44,14 +47,14 @@ html {
 }
 
 body {
-	font: 400 1rem 'DM Sans', sans-serif;
+	font: 400 1rem var(--body-font);
 	color: var(--text-color);
 	background: var(--body-color);
 	-webkit-font-smoothing: antialiased;
 }
 
 .title {
-	font: 700 1.875rem 'Poppins', sans-serif;
+	font: 700 var(--title-font-size) var(--title-font);
 	color: var(--title-color);
 	-webkit-font-smoothing: auto;
 }
@@ -64,7 +67,7 @@ body {
 	align-items: center;
 	padding: 0 2rem;
 	border-radius: 0.25rem;
-	font: 500 1rem 'DM Sans', sans-serif;
+	font: 500 1rem var(--body-font);
 	transition: background 0.3s;
 }
 
@@ -102,11 +105,15 @@ body {
 }
 
 .section {
-	padding: 5rem 0;
+	padding: calc(5rem + var(--header-height)) 0;
 }
 
 .section .title {
 	margin-bottom: 1rem;
+}
+
+.section .subtitle {
+	font-size: var(--subtitle-font-size);
 }
 
 .section header {
@@ -134,13 +141,9 @@ body {
 	box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.15);
 }
 
-main {
-	margin-top: calc(var(--header-height) + 2rem);
-}
-
 /*====  LOGO ============================ */
 .logo {
-	font: 700 1.31rem 'Poppins', sans-serif;
+	font: 700 1.31rem var(--title-font);
 	color: var(--title-color);
 }
 
@@ -170,7 +173,8 @@ nav ul li a {
 	position: relative;
 }
 
-nav ul li a:hover {
+nav ul li a:hover,
+nav ul li a.active {
 	color: var(--base-color);
 }
 
@@ -187,7 +191,8 @@ nav ul li a::after {
 	transition: width 0.2s;
 }
 
-nav ul li a:hover::after {
+nav ul li a:hover::after,
+nav ul li a.active::after {
 	width: 100%;
 }
 
@@ -363,8 +368,7 @@ nav.show div.icon-close {
 	margin-bottom: 0.75rem;
 }
 
-/*====  COMENTáRIOS ============================ */
-
+/*====  TESTIMONIALS ============================ */
 #testimonials {
 	background: white;
 }
@@ -414,32 +418,29 @@ nav.show div.icon-close {
 	clip-path: circle();
 	margin-right: 0.5rem;
 }
+
+/* swiper */
 .swiper-slide {
 	height: auto;
 	padding: 4rem 1rem;
 }
-/*.swiper-pagination-bullet {
+
+.swiper-pagination-bullet {
 	width: 0.75rem;
 	height: 0.75rem;
-}*/
+}
 
 .swiper-pagination-bullet-active {
 	background: var(--base-color);
 }
 
-/*====  CONTATOS ============================ */
-
+/*====  CONTACT ============================ */
 #contact .grid {
 	gap: 4rem;
 }
 
 #contact .text p {
 	margin-bottom: 2rem;
-}
-
-#contact .button i {
-	font-size: 1.5rem;
-	margin-top: 0.625rem;
 }
 
 #contact .button i,
@@ -460,9 +461,14 @@ nav.show div.icon-close {
 #contact ul li i {
 	color: var(--base-color);
 }
-/*====  FOOTER============================ */
+
+/*====  FOOTER ============================ */
 footer {
 	background: var(--base-color);
+}
+
+footer.section {
+	padding: 4rem 0;
 }
 
 footer .logo {
@@ -470,7 +476,7 @@ footer .logo {
 	margin-bottom: 1.5rem;
 }
 
-footer .brand {
+footer .brand p {
 	color: var(--text-color-light);
 	margin-bottom: 0.75rem;
 }
@@ -481,32 +487,32 @@ footer i {
 }
 
 footer .social {
-	display: flex;
-	gap: 2rem;
+	grid-auto-flow: column;
+	width: fit-content;
 }
 
-.icon-setaPraCima {
-	color: black;
+footer .social a {
+	transition: 0.3s;
+	display: inline-block;
 }
 
-/*back-to-top*/
+footer .social a:hover {
+	transform: translateY(-8px);
+}
 
+/* Back to top */
 .back-to-top {
 	background: var(--base-color);
 	color: var(--text-color-light);
 
+	position: fixed;
 	right: 1rem;
 	bottom: 1rem;
-	padding: 1rem;
-	clip-path: circle();
-}
-.back-to-top.show {
-	visibility: visible;
-	opacity: 1;
-	transform: translateY(0);
-}
 
-/*font-size: 1.5rem;
+	padding: 0.5rem;
+	clip-path: circle();
+
+	font-size: 1.5rem;
 	line-height: 0;
 
 	visibility: hidden;
@@ -514,26 +520,141 @@ footer .social {
 
 	transition: 0.3s;
 	transform: translateY(100%);
-*/
-
-footer .social a:hover {
-	/*efeito nos botoes de app*/
-	transform: translateY(-8px);
 }
-/*------- MEDIA QUERIES----------*/
-/* EXTRA LARGE DEVICES: 1200 > */
-/* LARGE DEVICES: 1023> */
-/* LAGE DEVICES : 992> */
-/* MEDIUM DEVICES: 767> ----tablet para baixo, em pixel*/
 
+.back-to-top.show {
+	visibility: visible;
+	opacity: 1;
+	transform: translateY(0);
+}
+
+/*========= MEDIA QUERIES =========*/
+/* extra large devices: 1200 > */
+@media (min-width: 1200px) {
+	/* reusable classes */
+	.container {
+		max-width: 1120px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.section {
+		padding: 10rem 0;
+	}
+
+	.section header,
+	#testimonials header {
+		max-width: 32rem;
+		text-align: center;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.button {
+		height: 3.125rem;
+	}
+
+	/* navigation */
+	nav .menu {
+		opacity: 1;
+		visibility: visible;
+		top: 0;
+	}
+
+	nav .menu ul {
+		display: flex;
+		gap: 2rem;
+	}
+
+	nav .menu ul li a.title {
+		font: 400 1rem var(--body-font);
+		-webkit-font-smoothing: antialiased;
+	}
+
+	nav .menu ul li a.title.active {
+		font-weight: bold;
+		-webkit-font-smoothing: auto;
+	}
+
+	nav .icon-menu {
+		display: none;
+	}
+
+	/* layout */
+	main {
+		margin-top: var(--header-height);
+	}
+
+	/* home */
+	#home .container {
+		grid-auto-flow: column;
+		justify-content: space-between;
+		margin: 0 auto;
+	}
+
+	#home .image {
+		order: 1;
+	}
+
+	#home .text {
+		order: 0;
+		max-width: 24rem;
+		text-align: left;
+	}
+
+	/* about */
+	#about .container {
+		margin: 0 auto;
+		grid-auto-flow: column;
+	}
+
+	/* services */
+	.cards {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+
+	.card {
+		padding-left: 3rem;
+		padding-right: 3rem;
+	}
+
+	/* testimonials */
+	#testimonials .container {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	/* contact */
+	#contact .container {
+		grid-auto-flow: column;
+		align-items: center;
+	}
+
+	#contact .text {
+		max-width: 25rem;
+	}
+
+	/* footer */
+	footer.section {
+		padding: 3.75rem 0;
+	}
+
+	footer .container {
+		grid-auto-flow: column;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	footer .logo {
+		font-size: 2.25rem;
+	}
+}
+/* large devices: 1023 > */
+/* large devices: 992 > */
 @media (min-width: 992px) {
 	:root {
-		--title-font-size: 2.5rem;
+		--title-font-size: 2.25rem;
 		--subtitle-font-size: 1.125rem;
 	}
 }
-
-@media (min-width: 1200px) {
-	:root {
-	}
-}
+/* medium devices: 767 > */
